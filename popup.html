@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ChatBot</title>
+    <style>
+        .centered-div {
+            text-align: center;
+            width: 100%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #chat-container {
+            width: 370px;
+            height: 440px;
+            border: 10px solid #ccc;
+            padding: 10px;
+            background: gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        #messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        #message-input {
+            width: 80%;
+            padding: 5px;
+        }
+        #send-btn {
+            padding: 5px;
+            cursor: pointer;
+            width: auto;
+            height: auto;
+        }
+        #voice-btn {
+          padding: None;
+          cursor: pointer;
+          width: auto;
+          height: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="chat-container">
+        <h2 class="centered-div">AI ChatBot</h2>
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type a message..." /> <br>
+        <div class="button-container">
+          <button id="send-btn">Send</button>
+          <button id="voice-btn">🎤</button>
+      </div>
+      
+    </div>
+
+    <script>
+        document.getElementById('send-btn').addEventListener('click', function () {
+            let input = document.getElementById('message-input').value.trim();
+            if (input !== '') {
+                appendMessage("You: " + input);
+                let response = getBotResponse(input);
+                appendMessage("Bot: " + response);
+
+                document.getElementById('message-input').value = '';
+            }
+        });
+
+        function appendMessage(message) {
+            let messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            document.getElementById('messages').appendChild(messageDiv);
+            document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes("hello") || input.includes("hi")) {
+                return "Hi there! How can I help you today?";
+            } else if (input.includes("how are you")) {
+                return "I'm just a chatbot, but I'm here to assist you!";
+            } else if (input.includes("bye")) {
+                return "Goodbye! Have a great day!";
+            } else {
+                return "I do not understand what you mean by that";
+            }
+        }
+        document.getElementById('voice-btn').addEventListener('click', function () {
+        let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-UK';
+        recognition.start();
+
+        recognition.onresult = function (event) {
+            let transcript = event.results[0][0].transcript;
+            document.getElementById('message-input').value = transcript;
+        };
+
+        recognition.onerror = function (event) {
+            console.log("Error occurred in recognition: " + event.error);
+        };
+})
+
+    </script>
+
+</body>
+</html>
