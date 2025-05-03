@@ -33,8 +33,8 @@ body {
 #send-btn,
 #scrape-btn,
 #voice-btn {
-    padding: 5px;  /* Uniform padding */
+    padding: 5px;
     cursor: pointer;
-    width: auto;  /* Flexible width */
-    height: auto; /* Flexible height */
+    width: auto;
+    height: auto;
 }
