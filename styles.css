@@ -1,0 +1,50 @@
+.centered-div {
+  text-align: center;
+  width: 100%;
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+#chat-container {
+  width: 370px;
+  height: 440px;
+  border: 10px solid #ccc;
+  padding: 10px;
+  background: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+#message-input {
+  width: 80%;
+  padding: 5px;
+}
+#send-btn {
+  padding: 5px;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+}
+#scrape-btn {
+padding: auto;
+cursor: pointer;
+width: auto;
+height: auto;
+}
+#voice-btn {
+padding: None;
+cursor: pointer;
+width: auto;
+height: auto;
+}
