@@ -1,8 +1,11 @@
 // server.js
+require('dotenv').config();
+  // This loads the .env file
+
 const express = require('express');
 const fetch = require('node-fetch'); // Install this if needed: npm install node-fetch
 const cors = require('cors');
-require('dotenv').config(); // Load .env variables
+
 
 const app = express();
 
